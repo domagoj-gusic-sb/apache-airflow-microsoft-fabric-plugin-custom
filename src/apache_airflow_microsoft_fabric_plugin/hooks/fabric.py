@@ -109,6 +109,7 @@ class FabricHook(BaseHook):
 
         connection = self.get_connection(self.conn_id)
         tenant_id = connection.extra_dejson.get("tenantId")
+        client_secret = connection.extra_dejson.get("client_secret")
         client_id = connection.login
         refresh_token = connection.password
         scopes = FABRIC_SCOPES
@@ -118,6 +119,7 @@ class FabricHook(BaseHook):
             "client_id": client_id,
             "refresh_token": refresh_token,
             "scope": scopes,
+            "client_secret": client_secret
         }
 
         response = self._send_request(
@@ -307,6 +309,7 @@ class FabricAsyncHook(FabricHook):
 
         connection = await sync_to_async(self.get_connection)(self.conn_id)
         tenant_id = connection.extra_dejson.get("tenantId")
+        client_secret = connection.extra_dejson.get("client_secret")
         client_id = connection.login
         refresh_token = connection.password
         scopes = FABRIC_SCOPES
@@ -316,6 +319,7 @@ class FabricAsyncHook(FabricHook):
             "client_id": client_id,
             "refresh_token": refresh_token,
             "scope": scopes,
+            "client_secret": client_secret
         }
         response = await self._send_request(
             "POST",
