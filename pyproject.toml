@@ -21,4 +21,4 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ambika-garg/apache-airflow-microsoft-fabric-plugin.git"
+Homepage = "https://github.com/ambika-garg/apache-airflow-microsoft-fabric-plugin-custom.git"
