@@ -122,10 +122,14 @@ class FabricRunItemOperator(BaseOperator):
         response = self.hook.run_fabric_item(
             workspace_id=self.workspace_id, item_id=self.item_id, job_type=self.job_type
         )
-        time.sleep(2.5) # Added sleep
+        logging.info("Sleeping for 3 seconds 1st time.")
+        time.sleep(3) # Added sleep
         self.location = response.headers["Location"]
-        time.sleep(2.5) # Added sleep
+        logging.info("Sleeping for 3 seconds 2nd time.")
         item_run_details = self.hook.get_item_run_details(self.location)
+        time.sleep(3)
+        logging.info("Sleeping for 3 seconds 3rd time.")
+        logging.info(f"Item run details: {item_run_details}.")
 
         self.item_run_status = item_run_details["status"]
         self.item_run_id = item_run_details["id"]
